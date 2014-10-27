@@ -11,7 +11,7 @@ cordova.d.ts is for who need to use the ionic keyboard plugin (https://github.co
 
 HOW TO USE:
 
-The files declare a global objec 'ionic', so it is possible to call the global ionic APIs (http://ionicframework.com/docs/api/), like ionic.Platform, ionic.DomUtil or ionic.EventController.
+The files declare a global object 'ionic', so it is possible to call the global ionic APIs (http://ionicframework.com/docs/api/), like ionic.Platform, ionic.DomUtil or ionic.EventController.
 
 There are also interfaces for all the delegates of the framework.
 
