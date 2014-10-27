@@ -24,3 +24,8 @@ myNgModule.controller('TestCtrl',
     $ionicActionSheet.show(...);
   });
 </pre>
+
+
+TODOS:
+There are some few things missing, like promises on certain functions returns. So far I've seen some implementations in typescript like this https://github.com/pragmatrix/Promise.
+I'm open for suggestions!
