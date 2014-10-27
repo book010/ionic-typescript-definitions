@@ -17,7 +17,10 @@ There are also interfaces for all the delegates of the framework.
 
 Example of using the ionic services and delegates inside a controller:
 
-myNgModule.controller('TestCtrl', function ($scope, $ionicPopup: Ionic.IPopup, $ionicActionSheet: Ionic.IActionSheet) {
-  $ionicPopup.alert(...);
-  $ionicActionSheet.show(...);
-}
+<pre>
+myNgModule.controller('TestCtrl',
+  function ($scope, $ionicPopup: Ionic.IPopup, $ionicActionSheet: Ionic.IActionSheet) {
+    $ionicPopup.alert(...);
+    $ionicActionSheet.show(...);
+  });
+</pre>
