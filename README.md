@@ -27,5 +27,7 @@ myNgModule.controller('TestCtrl',
 
 
 TODOS:
-There are some few things missing, like promises on certain functions returns. So far I've seen some implementations in typescript like this https://github.com/pragmatrix/Promise.
+
+There are some few things missing, like promises on certain functions returns (for the moment they all returns 'any' in the definitions).
+So far I've seen some implementations in typescript like this https://github.com/pragmatrix/Promise.
 I'm open for suggestions!
