@@ -5,7 +5,9 @@ Typescript definitions for Ionic framework (http://ionicframework.com/)
 
 
 ionic.d.ts is the main file with the main APIs of the Ionic framework defined.
+
 cordova.d.ts is for who need to use the ionic keyboard plugin (https://github.com/driftyco/ionic-plugins-keyboard)
+
 
 HOW TO USE:
 
