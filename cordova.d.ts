@@ -1,5 +1,15 @@
 ﻿/// <reference path="ionic.d.ts" />
 
+/**
+ * Typescript definition for ionic framework
+ * Bosa Daniele
+ * 
+ * v. 1.0.1
+ * 
+ * Based on Ionic Framework v. 1.0.0-beta.13 (http://ionicframework.com/)
+ * Dependencies: angular.d.ts (https://github.com/borisyankov/DefinitelyTyped/blob/master/angularjs/angular.d.ts) for promises
+ */ 
+
 interface Cordova
 {
     plugins: Plugins;
