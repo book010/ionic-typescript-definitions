@@ -4,7 +4,7 @@
  * 
  * v. 1.0.1
  * 
- * Base on Ionic Framework v. 1.0.0-beta.13 (http://ionicframework.com/)
+ * Based on Ionic Framework v. 1.0.0-beta.13 (http://ionicframework.com/)
  * Dependencies: angular.d.ts (https://github.com/borisyankov/DefinitelyTyped/blob/master/angularjs/angular.d.ts) for promises
  */ 
 
