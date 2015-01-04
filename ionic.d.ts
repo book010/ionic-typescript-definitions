@@ -1,4 +1,13 @@
-﻿
+/**
+ * Typescript definition for ionic framework
+ * Bosa Daniele
+ * 
+ * v. 1.0.1
+ * 
+ * Base on Ionic Framework v. 1.0.0-beta.13 (http://ionicframework.com/)
+ * Dependencies: angular.d.ts (https://github.com/borisyankov/DefinitelyTyped/blob/master/angularjs/angular.d.ts) for promises
+ */ 
+
 /**
  * Define a global ionic object
  */
@@ -542,7 +551,7 @@ declare module Ionic
          * Called when one of the non-destructive buttons is clicked, with the index of the button that was clicked and the button object.
          * Return true to close the action sheet, or false to keep it opened.
          */
-        buttonClicked?: () => boolean;
+        buttonClicked?: (index?: number) => any;
 
         /**
          * Called when the destructive button is clicked. Return true to close the action sheet, or false to keep it opened.
@@ -707,25 +716,41 @@ declare module Ionic
          */
         initialize(options: IModalOptions): void;
 
-        // TODO: add Promise object as returns
+        /**
+         * Returns an instance of an ionicModal controller.
+         * 
+         * @param templateString The template string to use as the modal's content.
+         * @param options Options to be passed to the initialize method.
+         */
+        fromTemplate(templateString: string, options: IModalOptions): IModal;
+
+        
+        /**
+         * Returns a promise that will be resolved with an instance of an ionicModal controller.
+         * 
+         * @param templateUrl The url to load the template from.
+         * @param options Options to be passed to the initialize method.
+         */
+        fromTemplateUrl(templateUrl: string, options: IModalOptions): ng.IPromise<IModal>;
+
 
         /**
          * Show this modal instance
          * Returns a promise which is resolved when the modal is finished animating in
          */
-        show(): any;
+        show(): ng.IPromise<any>;
 
         /**
          * Hide this modal instance
          * Returns a promise which is resolved when the modal is finished animating out
          */
-        hide(): any;
+        hide(): ng.IPromise<any>;
 
         /**
          * Remove this modal instance from the DOM and clean up
          * Returns a promise which is resolved when the modal is finished animating out
          */
-        remove(): any;
+        remove(): ng.IPromise<any>;
 
         /**
          * Returns whether this modal is currently shown.
@@ -853,14 +878,13 @@ declare module Ionic
          */
         fromTemplate(templateString: string, options: IPopoverOptions): IPopover;
 
-        // TODO: promise
         /**
          * Returns a promise that will be resolved with an instance of an ionicPopover controller ($ionicPopover is built on top of $ionicPopover).
          * 
          * @param templateUrl The url to load the template from
          * @param Options to be passed to the initialize method
          */
-        fromTemplateUrl(templateUrl: string, options: IPopoverOptions): any;
+        fromTemplateUrl(templateUrl: string, options: IPopoverOptions): ng.IPromise<IPopover>;
 
         /**
          * Creates a new popover controller instance
@@ -868,28 +892,25 @@ declare module Ionic
          */
         initialize(options: IPopoverOptions): void;
 
-        // TODO: promise
         /**
          * Show this popover instance.
          * Returns a promise which is resolved when the popover is finished animating in.
          * 
          * @param $event The $event or target element which the popover should align itself next to.
          */
-        show($event: any): any;
+        show($event: any): ng.IPromise<any>;
 
-        // TODO: promise
         /**
          * Hide this popover instance.
          * Returns a promise which is resolved when the popover is finished animating out.
          */
-        hide(): any;
+        hide(): ng.IPromise<any>;
 
-        // TODO: promise
         /**
          * Remove this popover instance from the DOM and clean up.
          * Returns a promise which is resolved when the popover is finished animating out.
          */
-        remove(): any;
+        remove(): ng.IPromise<any>;
 
         /**
          * Returns whether this popover is currently shown.
@@ -904,8 +925,8 @@ declare module Ionic
     interface IPopupButton
     {
         text: string;
-        type: string;
-        onTap(e: Event): void;
+        type?: string;
+        onTap?(e: Event): void;
     }
 
     interface IPopupOptions
@@ -1082,7 +1103,6 @@ declare module Ionic
      */
     interface IPopup
     {
-        // TODO: promise
         /**
          * Show a complex popup. This is the master show function for all popups.
          * A complex popup has a buttons array, with each button having a text and type field, in addition to an onTap function.
@@ -1094,7 +1114,7 @@ declare module Ionic
          * 
          * @param options The options for the new popup
          */
-        show(options: IPopupOptions): any;
+        show(options: IPopupOptions): ng.IPromise<any>;
 
         /**
          * Show a simple alert popup with a message and one button that the user can tap to close the popup.
@@ -1103,7 +1123,7 @@ declare module Ionic
          * 
          * @param options The options for showing the alert
          */
-        alert(options: IPopupAlertOptions): any;
+        alert(options: IPopupAlertOptions): ng.IPromise<any>;
 
         /**
          * Show a simple confirm popup with a Cancel and OK button.
@@ -1113,7 +1133,7 @@ declare module Ionic
          * 
          * @parma options The options for showing the confirm popup
          */
-        confirm(options: IPopupConfirmOptions): any;
+        confirm(options: IPopupConfirmOptions): ng.IPromise<any>;
 
         /**
          * Show a simple prompt popup, which has an input, OK button, and Cancel button. Resolves the promise with the value of the input if the user presses OK, and with undefined if the user presses Cancel.
@@ -1122,7 +1142,7 @@ declare module Ionic
          * 
          * @param options The options for showing the prompt popup
          */
-        prompt(options: IPopupPromptOptions): any;
+        prompt(options: IPopupPromptOptions): ng.IPromise<any>;
     }
 
     //#endregion
