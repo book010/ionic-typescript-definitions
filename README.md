@@ -28,3 +28,8 @@ myNgModule.controller('TestCtrl',
 ##DEPENDENCIES:
 
 Promises definitions are based on angular.d.ts (https://github.com/borisyankov/DefinitelyTyped/blob/master/angularjs/angular.d.ts)
+
+##BETA14
+
+Beta14 conversion is still in progress, see beta14/ionic.d.ts
+Watch for comments "Added 1.0.0-beta14", "Removed 1.0.0-beta14", "TODO"
