@@ -930,17 +930,131 @@ declare module Ionic
      * Angular service: $ionicHistory
      * 
      * Delegate for controlling the ionNavBar directive.
+     *
+     * See http://ionicframework.com/docs/api/service/$ionicHistory/
      */
-    // Added 1.0.0-beta14
-    interface IHistory
-    {
+    interface IHistory {
+
+        /**
+         * The app's view history data, such as all the views and histories, along with how they are ordered and linked together within the navigation stack.
+         * @returns Returns an object containing the apps view history data.
+         */
+        viewHistory(): IViewHistory;
+
+        /**
+         * The app's current view.
+         * @returns Returns the current view.
+         */
+        currentView(): IView;
+
+        /**
+         * The ID of the history stack which is the parent container of the current view.
+         * @returns Returns the current history ID.
+         */
+        currentHistoryId(): string;
+
+        /**
+         * Gets and sets the current view's title.
+         * @param val The title to update the current view with.
+         * @returns Returns the current view's title.
+         */
+        currentTitle(val?: string): string;
+
+        /**
+         * Returns the view that was before the current view in the history stack. 
+         * If the user navigated from View A to View B, then View A would be the back view, and View B would be the current view.
+         * @returns Returns the back view.
+         */
+        backView(): IView;
+
+        /**
+         * Gets the back view's title.
+         * @returns Returns the back view's title.
+         */
+        backTitle(): string;
+
+        /**
+         * Returns the view that was in front of the current view in the history stack. 
+         * A forward view would exist if the user navigated from View A to View B, then navigated back to View A. 
+         * At this point then View B would be the forward view, and View A would be the current view.
+         * @returns Returns the forward view.
+         */
+        forwardView(): IView;
+
+        /**
+         * Returns the current state name.
+         * @returns Returns the current state name.
+         */
+        currentStateName(): string;
 
         /**
          * Navigates the app to the back view, if a back view exists.
          */
         goBack(): void;
 
-        // TODO
+        /**
+         * Clears out the app's entire history, except for the current view.
+         */
+        clearHistory(): void;
+
+        /**
+         * Removes all cached views within every 'ionNavView'. This both removes the view element from the DOM, and destroy it's scope.
+         */
+        clearCache(): void;
+
+        /**
+         * Sets options for the next view. 
+         * This method can be useful to override certain view/transition defaults right before a view transition happens. 
+         * For example, the menuClose directive uses this method internally to ensure an animated view transition does not happen when a side menu is open, and also sets the next view as the root of its history stack. 
+         * After the transition these options are set back to null.
+         */
+        nextViewOptions(options: INextViewOptions): INextViewOptions;
+
+    }
+
+    interface IView {
+        viewId: string;
+        index: number;
+        historyId: string;
+        backViewId: string;
+        forwardViewId: string;
+        stateId: string;
+        stateName: string;
+        stateParams: any;
+        url: string;
+        title: string;
+    }
+
+    interface IViewHistory {
+        histories: {
+            root: {
+                historyId: string;
+                parentHistoryId: string;
+                stack: Array<IView>;
+                cursor: number;
+            }
+        }
+        backView: IView;
+        currentView: IView;
+        forwardView: IView;
+        views: { [viewId: number]: IView }
+    }
+
+    interface INextViewOptions {
+        /**
+         * Do not animate the next transition.
+         */
+        disableAnimate?: boolean;
+
+        /**
+         * The next view should forget its back view, and set it to null.
+         */
+        disableBack?: boolean;
+
+        /**
+         * The next view should become the root view in its history stack.
+         */
+        historyRoot?: boolean;
     }
 
     //#endregion
