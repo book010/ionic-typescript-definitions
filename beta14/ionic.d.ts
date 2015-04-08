@@ -21,6 +21,7 @@ declare module Ionic
         Platform: IPlatform;
         DomUtil: IDomUtil;
         EventController: IEventController;
+        Utils: IUtils;
 
         //#region EventController Aliases
         /**
@@ -1527,4 +1528,76 @@ declare module Ionic
         $getByHandle(handle: string): ITabsDelegate;
     }
     //#endregion
+
+    //#region Utils
+
+    /**
+    * Various utilities used throughout Ionic
+    *
+    * Some of these are adopted from underscore.js and backbone.js, both also MIT licensed.
+    */
+    interface IUtils
+    {
+        /**
+         * Function for move elements into array
+         * @param arr array to use
+         * @param old_index old index to move
+         * @param new_index new index to move
+         * @return array with elements moved
+         */
+        arrayMove(arr: any[], old_index: number, new_index: number): any[];
+
+        /**
+        * Return a function that will be called with the given context
+        */
+        proxy(func: Function, context: any): () => any;
+
+        /**
+         * Returns a function, that, as long as it continues to be invoked, will not
+         * be triggered. The function will be called after it stops being called for
+         * N milliseconds. If `immediate` is passed, trigger the function on the
+         * leading edge, instead of the trailing.
+         *
+         * @param func {Function} the function to call
+         * @param wait {int} how long to wait before/after to allow function calls
+         * @param immediate {boolean} whether to call immediately or after the wait interval
+         */
+        debounce(func: Function, wait: number, immediate: boolean): () => any;
+
+        /**
+        * Throttle the given fun, only allowing it to be
+        * called at most every `wait` ms.
+        */
+        throttle(func: Function, wait: number, options?: any): () => any;
+
+
+        /** Borrowed from Backbone.js's extend
+         * Helper function to correctly set up the prototype chain, for subclasses.
+         * Similar to `goog.inherits`, but uses a hash of prototype properties and
+         * class properties to be extended.
+         */
+        inherit(protoProps: any, staticProps: any): any;
+
+        /** Extend adapted from Underscore.js */
+        extend(obj: any): any;
+
+        /**
+        * A consistent way of creating unique IDs in angular. The ID is a sequence of alpha numeric
+        * characters such as '012ABC'. The reason why we are not using simply a number counter is that
+        * the number string gets longer over time, and it can also overflow, where as the nextId
+        * will grow much slower, it is a string, and it will never overflow.
+        *
+        * @returns an unique alpha-numeric string
+        */
+        nextUid(): string;
+
+        disconnectScope(scope: any): void;
+
+        reconnectScope(scope: any): void;
+
+        isScopeDisconnected(scope: any): boolean;
+
+    }
+
+    //#endregion Utils
 }
